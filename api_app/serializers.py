@@ -11,7 +11,7 @@ class BotUserSerializer(serializers.ModelSerializer):
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
-        fields = ['id', 'name', 'kelish_narx', 'sotish_narx', 'brend', 'image', 'shtrix', 'xarakteristika']
+        fields = ['id', 'name_uz', 'name_ru', 'kelish_narx', 'sotish_narx', 'brend', 'image', 'shtrix', 'xarakteristika_uz', 'xarakteristika_ru']
 
 
 class SavatSerializer(serializers.ModelSerializer):
