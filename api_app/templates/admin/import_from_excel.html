@@ -1,0 +1,13 @@
+{% extends 'admin/base_site.html' %}
+
+{% block content %}
+    <div class="module">
+        <div class="module-content">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-success">Import</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
