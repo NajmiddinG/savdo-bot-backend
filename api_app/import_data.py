@@ -23,15 +23,18 @@ def import_data(file_path):
             product.sotish_narx = row[2]
             product.brend = row[3]
             product.shtrix = row[4]
-            try:
-                image = image_loader.get(row[5])
-                if image:
-                    image.show()
-                    current_time = datetime.datetime.now()
-                    filename = f"image_{current_time.strftime('%Y%m%d%H%M%S')}.jpg"
-                    image_path = os.path.join(settings.MEDIA_ROOT, 'products', filename)
-                    image.save(image_path)
-                    product.image = os.path.join('products', filename)
-            except: pass
+            if row.get(5):
+                try:
+                    image = image_loader.get(row[5])
+                    if image:
+                        image.show()
+                        current_time = datetime.datetime.now()
+                        filename = f"image_{current_time.strftime('%Y%m%d%H%M%S')}.jpg"
+                        image_path = os.path.join(settings.MEDIA_ROOT, 'product', filename)
+                        image.save(image_path)
+                        product.image = os.path.join('product', filename)
+                except:
+                    product.image = os.path.join('product', 'product.jpg')
+            else: product.image = os.path.join('product', 'product.jpg')
             product.save()
         except: pass
