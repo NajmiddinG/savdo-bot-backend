@@ -106,3 +106,8 @@ JAZZMIN_SETTINGS = {
     "site_brand": "Bot Admin",
     "welcome_sign": "Sotuv Adminiga xush kelibsiz!",
 }
+
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
