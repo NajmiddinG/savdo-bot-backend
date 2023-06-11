@@ -15,7 +15,7 @@ class ProductPagination(pagination.PageNumberPagination):
 
 
 class ProductListCreateApiViewSet(viewsets.ModelViewSet):
-    queryset = Product.objects.all()
+    queryset = Product.objects.all().order_by('-id')
     serializer_class = ProductSerializer
     pagination_class = ProductPagination
 
