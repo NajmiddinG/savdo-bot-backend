@@ -1,3 +1,9 @@
 django==4.2.1
 djangorestframework==3.14.0
 Pillow==9.0.1
+openpyxl-image-loader==1.0.5
+openpyxl==3.1.2
+pandas==2.0.2
+-U django-jazzmin==2.6.0
+django_cleanup==7.0.0
+django_modeltranslation==0.18.10
