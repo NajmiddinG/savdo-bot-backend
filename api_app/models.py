@@ -58,6 +58,7 @@ class Buyurtma(models.Model):
     count = models.IntegerField(default=1)
     location = models.TextField(max_length=1000)
     tel = models.CharField(max_length=30)
+    yakunlandi = models.BooleanField(default=False)
     date = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):

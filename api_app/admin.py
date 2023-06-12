@@ -63,7 +63,7 @@ class SavatAdmin(admin.ModelAdmin):
 
 @admin.register(Buyurtma)
 class BuyurtmaAdmin(admin.ModelAdmin):
-    list_display = ('id', 'user', 'product', 'count', 'location', 'tel', 'date')
+    list_display = ('id', 'user', 'product', 'yakunlandi', 'count', 'location', 'tel', 'date')
     search_fields = ('user__name', 'product__name', 'location', 'tel')
 
 
