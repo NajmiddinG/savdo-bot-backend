@@ -4,7 +4,7 @@ from modeltranslation import settings as mt_settings
 
 
 class BotUser(models.Model):
-    user_id = models.CharField(max_length=255)
+    id = models.CharField(max_length=255, primary_key=True)
     name = models.CharField(max_length=255)
     username = models.CharField(max_length=255, null=True, blank=True)
     lan = models.CharField(max_length=10, default='uz')
@@ -14,6 +14,7 @@ class BotUser(models.Model):
         return self.name
     
     class Meta:
+        db_table = 'bot_user'
         verbose_name = 'Foydalanuvchi '
         verbose_name_plural = '1. Foydalanuvchilar'
 

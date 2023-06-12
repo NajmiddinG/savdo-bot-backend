@@ -5,7 +5,7 @@ from .models import BotUser, Product, Savat, Buyurtma
 class BotUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = BotUser
-        fields = ['id', 'user_id', 'name', 'lan', 'username', 'date']
+        fields = ['id', 'name', 'lan', 'username', 'date']
 
 
 class ProductSerializer(serializers.ModelSerializer):

@@ -26,6 +26,7 @@ class ImportDataForm(forms.Form):
 class ProductAdmin(admin.ModelAdmin):
     list_display = ('id', 'shtrix', 'name', 'kelish_narx', 'sotish_narx', 'brend')
     search_fields = ('name', 'brend', 'shtrix')
+    change_list_template = 'admin/product_change_list.html'
 
     def import_from_excel_view(self, request):
         if request.method == 'POST':
@@ -44,7 +45,7 @@ class ProductAdmin(admin.ModelAdmin):
         }
         return render(request, 'admin/import_from_excel.html', context)
 
-    change_list_template = 'admin/product_change_list.html'
+    
 
     def get_urls(self):
         from django.urls import path
@@ -101,3 +102,5 @@ class IncomeAdmin(admin.ModelAdmin):
     #     extra_context['time_range_form'] = TimeRangeForm()
 
     #     return super().changelist_view(request, extra_context=extra_context)
+
+
