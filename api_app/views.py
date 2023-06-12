@@ -22,12 +22,9 @@ class ProductListCreateApiViewSet(viewsets.ModelViewSet):
 # savat
 class SavatListCreateApiViewSet(viewsets.ModelViewSet):
     serializer_class = SavatSerializer
-
+    
     def get_queryset(self):
-        # Get the user ID from the aiogram bot user's context
-        user_id = self.request.context.get('user_id')
-
-        # Filter the queryset based on the user ID
+        user_id = self.kwargs.get('user_id')
         return Savat.objects.filter(user_id=user_id)
 
 # buyurtma
@@ -35,8 +32,5 @@ class BuyurtmaListCreateApiViewSet(viewsets.ModelViewSet):
     serializer_class = BuyurtmaSerializer
 
     def get_queryset(self):
-        # Get the user ID from the aiogram bot user's context
-        user_id = self.request.context.get('user_id')
-
-        # Filter the queryset based on the user ID
+        user_id = self.kwargs.get('user_id')
         return Buyurtma.objects.filter(user_id=user_id)
