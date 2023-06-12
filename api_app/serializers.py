@@ -23,4 +23,4 @@ class SavatSerializer(serializers.ModelSerializer):
 class BuyurtmaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Buyurtma
-        fields = ['id', 'user', 'product', 'count', 'location', 'tel', 'date']
+        fields = ['id', 'user', 'product', 'count', 'yakunlandi', 'location', 'tel', 'date']
