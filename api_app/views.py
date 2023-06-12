@@ -1,6 +1,8 @@
-from rest_framework import viewsets, pagination
+from rest_framework import viewsets, pagination, status
 from .models import BotUser, Product, Savat, Buyurtma
 from .serializers import BotUserSerializer, ProductSerializer, SavatSerializer, BuyurtmaSerializer
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
 
 # Bot user
 class BotUserListCreateApiViewSet(viewsets.ModelViewSet):
@@ -19,18 +21,24 @@ class ProductListCreateApiViewSet(viewsets.ModelViewSet):
     serializer_class = ProductSerializer
     pagination_class = ProductPagination
 
-# savat
+@api_view(['GET'])
+def get_savat_data(request, user_id):
+    queryset = Savat.objects.filter(user_id=user_id)
+    serializer = SavatSerializer(queryset, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def get_buyurtma_data(request, user_id):
+    queryset = Buyurtma.objects.filter(user_id=user_id)
+    serializer = BuyurtmaSerializer(queryset, many=True)
+    return Response(serializer.data)
+
 class SavatListCreateApiViewSet(viewsets.ModelViewSet):
+    queryset = Savat.objects.all().order_by('-date')
     serializer_class = SavatSerializer
-    
-    def get_queryset(self):
-        user_id = self.kwargs.get('user_id')
-        return Savat.objects.filter(user_id=user_id)
+
 
 # buyurtma
 class BuyurtmaListCreateApiViewSet(viewsets.ModelViewSet):
+    queryset = Buyurtma.objects.all().order_by('-date')
     serializer_class = BuyurtmaSerializer
-
-    def get_queryset(self):
-        user_id = self.kwargs.get('user_id')
-        return Buyurtma.objects.filter(user_id=user_id)

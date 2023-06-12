@@ -4,7 +4,8 @@ from .views import (
     BotUserListCreateApiViewSet,
     ProductListCreateApiViewSet,
     SavatListCreateApiViewSet,
-    BuyurtmaListCreateApiViewSet
+    BuyurtmaListCreateApiViewSet,
+    get_buyurtma_data, get_savat_data
 )
 
 router = routers.DefaultRouter()
@@ -15,6 +16,6 @@ router.register(r'buyurtma', BuyurtmaListCreateApiViewSet, basename='buyurtma')
 
 urlpatterns = [
     path('', include(router.urls)),
-    path('savat-list/<int:user_id>/', SavatListCreateApiViewSet.as_view({'get': 'list'}), name='savat-list'),
-    path('buyurtma-list/<int:user_id>/', BuyurtmaListCreateApiViewSet.as_view({'get': 'list'}), name='buyurtma-list')
+    path('savat-list/<int:user_id>/', get_savat_data, name='savat-list'),
+    path('buyurtma-list/<int:user_id>/', get_buyurtma_data, name='buyurtma-list')
 ]
