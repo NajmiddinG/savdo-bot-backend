@@ -21,10 +21,16 @@ class ProductListCreateApiViewSet(viewsets.ModelViewSet):
 
 # savat
 class SavatListCreateApiViewSet(viewsets.ModelViewSet):
-    queryset = Savat.objects.all()
     serializer_class = SavatSerializer
+
+    def get_queryset(self):
+        # Filter the queryset based on the bot user
+        return Savat.objects.filter(user=self.request.user)
 
 # buyurtma
 class BuyurtmaListCreateApiViewSet(viewsets.ModelViewSet):
-    queryset = Buyurtma.objects.all()
     serializer_class = BuyurtmaSerializer
+
+    def get_queryset(self):
+        # Filter the queryset based on the bot user
+        return Buyurtma.objects.filter(user=self.request.user)
