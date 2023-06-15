@@ -3,6 +3,8 @@ from .models import BotUser, Product, Savat, Buyurtma
 from .serializers import BotUserSerializer, ProductSerializer, SavatSerializer, BuyurtmaSerializer
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
+from rest_framework import filters
+from django_filters.rest_framework import DjangoFilterBackend
 
 # Bot user
 class BotUserListCreateApiViewSet(viewsets.ModelViewSet):
@@ -20,6 +22,9 @@ class ProductListCreateApiViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.all().order_by('-id')
     serializer_class = ProductSerializer
     pagination_class = ProductPagination
+    filter_backends = [DjangoFilterBackend, filters.OrderingFilter]
+    filterset_fields = ['shtrix']
+    ordering_fields = ['id']
 
 @api_view(['GET'])
 def get_savat_data(request, user_id):
