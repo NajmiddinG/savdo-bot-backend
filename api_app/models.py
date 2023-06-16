@@ -1,5 +1,4 @@
 from django.db import models
-from ckeditor.fields import RichTextField
 from modeltranslation import settings as mt_settings
 
 
@@ -26,7 +25,7 @@ class Product(models.Model):
     brend = models.CharField(max_length=255)
     image = models.ImageField(upload_to='product/', blank=True, null=True)
     shtrix = models.CharField(max_length=255, unique=True)
-    xarakteristika = RichTextField(blank=True, null=True)
+    xarakteristika = models.TextField(max_length=10000, blank=True, null=True)
 
     def __str__(self):
         return self.name
