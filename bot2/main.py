@@ -5,11 +5,11 @@ from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from datetime import datetime
 
 from aiogram import Bot, Dispatcher, executor, types
-from bot2.buttons import create_keyboard_markup
-from bot2.api import create_user, set_user_language, get_user_language
+from buttons import create_keyboard_markup
+from api import create_user, set_user_language, get_user_language
 import requests
 import bleach
-from bot2.api import BASE_URL
+from api import BASE_URL
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from aiogram.dispatcher import FSMContext
 from states import OrderState, CartState
