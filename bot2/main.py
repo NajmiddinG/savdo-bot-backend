@@ -5,11 +5,11 @@ from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from datetime import datetime
 
 from aiogram import Bot, Dispatcher, executor, types
-from buttons import create_keyboard_markup
-from api import create_user, set_user_language, get_user_language
+from bot2.buttons import create_keyboard_markup
+from bot2.api import create_user, set_user_language, get_user_language
 import requests
 import bleach
-from api import BASE_URL
+from bot2.api import BASE_URL
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from aiogram.dispatcher import FSMContext
 from states import OrderState, CartState
@@ -19,7 +19,7 @@ API_TOKEN = '6051249815:AAH14Wsz2CopO-Q7o-Yu0gWsYW3bXhwMB5s'
 
 logging.basicConfig(level=logging.INFO)
 
-bot = Bot(token=API_TOKEN)
+bot = Bot(token=API_TOKEN, proxy='http://proxy.server:3128')
 storage = MemoryStorage()
 dp = Dispatcher(bot, storage=storage)
 
